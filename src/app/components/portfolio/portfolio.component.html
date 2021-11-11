@@ -1,0 +1,75 @@
+<div class="toolbar" role="banner">
+</div>
+<div>
+    <div class="example-wrap">
+        <form class="k-form" [formGroup]="registerForm">
+
+            <fieldset class="k-form-fieldset">
+                <legend class="k-form-legend">ניירות להעברה</legend>
+                <kendo-formfield>
+                    <kendo-label [for]="SecurityId" text="מס' נייר"></kendo-label>
+                    <input formControlName="SecurityId" kendoTextBox #SecurityId required />
+                    <kendo-formhint>Security Id</kendo-formhint>
+                    <kendo-formerror>Error: Security Id required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <kendo-label [for]="SecurityName" text="שם נייר"></kendo-label>
+                    <input formControlName="SecurityName" kendoTextBox #SecurityName required />
+                    <kendo-formhint>Security Name</kendo-formhint>
+                    <kendo-formerror>Error: SecurityName is required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <kendo-label [for]="SecuritiesAmount" text="כמות"></kendo-label>
+                    <input formControlName="SecuritiesAmount" kendoTextBox #SecuritiesAmount required />
+                    <kendo-formhint>SecuritiesAmount</kendo-formhint>
+                    <kendo-formerror>Error: Securities Amount is required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <kendo-label [for]="ManagingBank" text="בנק מנהל"></kendo-label>
+                    <input formControlName="ManagingBank" kendoTextBox #ManagingBank required />
+                    <kendo-formhint>Managing Bank</kendo-formhint>
+                    <kendo-formerror>Error: ManagingBank is required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <kendo-label [for]="AccountNumber" text="מספר חשבון"></kendo-label>
+                    <input formControlName="AccountNumber" kendoTextBox #AccountNumber required />
+                    <kendo-formhint>Account Number</kendo-formhint>
+                    <kendo-formerror>Error: Account Number is required</kendo-formerror>
+                </kendo-formfield>
+
+
+                <div class="k-form-buttons">
+                    <button class="k-button k-primary" (click)="submitForm()">
+                        Submit
+                    </button>
+                    <button class="k-button" (click)="clearForm()">Clear</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="securities-properties">
+        <h3>
+            נכסים
+        </h3>
+
+        <kendo-grid [data]="gridData" [pageSize]="pageSize" [skip]="skip" [pageable]="true" [height]="400"
+            (pageChange)="pageChange($event)">
+            <kendo-grid-column field="SecurityName" title="שם נייר"> </kendo-grid-column>
+            <kendo-grid-column field="Symbol" title="סימול"> </kendo-grid-column>
+            <kendo-grid-column field="SecurityId" title="מס' ני'ע"> </kendo-grid-column>
+            <kendo-grid-column field="SecurityType" title="סוג"> </kendo-grid-column>
+            <kendo-grid-column field="ClosingPrice" title="שער נעילה (באגורות)"> </kendo-grid-column>
+            <kendo-grid-column field="PercentageChange" title="שינוי (באחוזים)"> </kendo-grid-column>
+            <kendo-grid-column field="LastTransactionTime" title="זמן עסקה אחרונה"> </kendo-grid-column>
+            <kendo-grid-column field="SecuritiesAmount" title="כמות"> </kendo-grid-column>
+            <kendo-grid-column field="ManagingBank" title="בנק מנהל"> </kendo-grid-column>
+            <kendo-grid-column field="AccountNumber" title="מס' חשבון"> </kendo-grid-column>
+        </kendo-grid>
+    </div>
+
+</div>
